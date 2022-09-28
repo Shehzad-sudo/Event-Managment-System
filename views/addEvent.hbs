@@ -1,0 +1,165 @@
+<div id = "form">
+<form class="row g-3 " method="POST" action="/event/add" validate>
+        
+
+<div class="col-md-3">
+    <label for="validationCustom01" class="form-label">Event Name</label>
+    <input type="text" class="form-control" id="validationCustom01"  required="false" name="Name">
+  </div>
+
+
+  <div class="col-md-3">
+    <label for="validationCustom04" class="form-label">Event Type</label>
+    <select class="form-select" id="validationCustom04" required="false" name="type">
+      <option selected disabled value="">Select</option>
+      <option >Award Ceremony</option>
+      <option >Meeting</option>
+      <option >Seminar</option>
+      <option >Party</option>
+      <option >Other</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select a valid state.
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <label for="validationCustom01" class="form-label">Attendes Capacity</label>
+    <input type="text" class="form-control" id="capacity"  required="false" name="capacity">
+  </div>
+
+
+    <div class="col-md-3" style="margin-top: 8px;">
+        <label for="validationCustomcnic" class="form-label">Select Venue</label>
+        <div class="input-group">
+            <input  type="text" class="form-control locationIN" id="loc" aria-describedby="inputGroupPrepend" aria-readonly="true" required="" readonly name="location">    
+            <button type="button" class="bi bi-plus fa-lg select-venue" aria-readonly="true" style="border:0 ;"> </button>
+    </div>
+
+
+ 
+    
+
+          <div class="col-md-4" style="display:none ;" >
+          <label for="validationCustomcnic" class="form-label">Start Time</label>
+          <input  type="datetime-local" class="form-control"  aria-describedby="inputGroupPrepend" required=" "  value="" id="startTimeHid" name="startTimeHid">
+          </div>
+
+
+
+      
+          <div class="col-md-4" style="display:none ;">
+          <label for="validationCustomcnic" class="form-label">End Time</label>
+          <input  type="datetime-local" class="form-control"  aria-describedby="inputGroupPrepend" required= " " value="" id="endTimeHid" name="endTimeHid">
+          </div>
+      
+
+  <div class="col-md-12">
+    <button class="btn btn-primary d-grid" type="submit">Submit form</button>
+  </div>
+</form>
+</div>
+
+
+
+
+    <form method="post" action="/event/addEventDated" >
+
+      <div style="display:block ;">
+          <div class="col-md-4" style="display:block ;">
+          <label for="validationCustomcnic" class="form-label">Start Time</label>
+          <input  type="datetime-local" class="form-control" id="startTime" aria-describedby="inputGroupPrepend" required="" name="startTime">
+          </div>
+      </div>
+
+
+      <div style="display:block ;">
+          <div class="col-md-4">
+          <label for="validationCustomcnic" class="form-label">End Time</label>
+          <input  type="datetime-local" class="form-control" id="endTime" aria-describedby="inputGroupPrepend" required="" name="endTime">
+          </div>
+      </div>
+
+        <div class="col-md-12"  style="display:hidd ;">
+        <button id="submitDate" class="btn btn-primary d-grid" type="submit">Venue Avalibility</button>
+        </div>
+
+    </form>
+
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="display:flex;">
+    <a href = "/event/addlocation" class="btn btn-primary me-md-2" type="button">Add new Location</a>
+    </div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Venue Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Avalibility</th>
+      <th scope="col">Action</th>
+
+      
+
+    </tr>
+  </thead>
+
+
+{{#each entity}}
+  <tbody class="table-group-divider">
+    <tr>
+      <th id = "empID" scope="row">{{this.locationID}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.address}}</td>
+      <td id="action-button">
+        <button type="button" class="bi bi-plus fa-lg select-btn" >  </button>
+      </td>
+    </tr>
+  </tbody>
+{{/each}}
+</table>
+
+
+
+<script>
+  // let refresh = window.addEventListener("load",function(){
+   // if( document.querySelector("[name='startTime']").value.lenght == 1 && document.querySelector("[name='endTime']").value.lenght == 1 ){
+   //     document.querySelector("#submitDate").click();
+   //  }
+   //  setTimeout(refresh,2000);
+      
+   // });
+
+   document.addEventListener("load",function(){
+    document.querySelector("#loc").value = null;
+    
+     })
+
+
+    locID = localStorage["locID"];
+    document.querySelector(".locationIN").value = locID;
+
+    setInterval(startT,1500);
+
+   // window.addEventListener("mousemove",function(){
+       function startT(){
+        document.querySelector("#startTimeHid").value =  document.querySelector("#startTime").value; 
+        document.querySelector("#endTimeHid").value =  document.querySelector("#endTime").value;
+
+      }
+      
+
+     // { let endT = document.addEventListener("load",function(){
+        //document.querySelector("#endTimeHid").value =  document.querySelector("#endTime").value;
+      //  setTimeout(endT,500);
+     // })
+
+    //})
+
+
+  
+</script>
+
+
+

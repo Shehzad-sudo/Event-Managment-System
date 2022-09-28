@@ -1,0 +1,67 @@
+<div id = "form">
+<form class="row g-3 " method="POST" action="/employee/add" validate>
+  <div class="col-md-3">
+    <label for="validationCustom01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationCustom01"  required="" name="firstName">
+
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationCustom02" required="" name="lastName">
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustomUsername" class="form-label">Phone</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="inputGroupPrepend">+92</span>
+      <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="" minlength="10" maxlength="10" name="phone">
+      <div class="invalid-feedback">
+        Please Enter number.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationCustom03" class="form-label">Email</label>
+    <input type="text" class="form-control" placeholder="name@gmail.com" id="validationCustom03" required="" name="email">
+    <div class="invalid-feedback">
+      Please provide a Email.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom04" class="form-label">Gender</label>
+    <select class="form-select" id="validationCustom04" required="" name="gender">
+      <option selected disabled value="">Select</option>
+      <option >Male</option>
+      <option >Female</option>
+      <option >Other</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select a valid state.
+    </div>
+  </div>
+
+    <div class="col-md-4">
+    <label for="validationCustomcnic" class="form-label">CNIC</label>
+    <input  class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="" name="cnic">
+
+  </div>
+
+    <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Salary</label>
+    <input type="text" class="form-control" id="validationCustom02" required="" name="salary">
+    </div>
+
+    <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Work</label>
+    <input type="text" class="form-control" id="validationCustom02" required="" name="work">
+    </div>
+
+
+    </div>
+  <div class="col-md-2">
+    <button class="btn btn-primary d-grid" type="submit">Submit form</button>
+  </div>
+</form>
+</div>

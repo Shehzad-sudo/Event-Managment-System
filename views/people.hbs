@@ -1,0 +1,95 @@
+<script src="/lib_functions.js"></script>
+
+{{!-- button --}}
+<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="display:flex;">
+  <a href = "/people/add" class="btn btn-primary me-md-2" type="button">Add</a>
+</div>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Occupation</th>
+      <th scope="col">Email</th>
+      <th scope="colgroup">Actions</th>
+
+    </tr>
+  </thead>
+
+
+{{#each entity}}
+  <tbody class="table-group-divider">
+    <tr>
+      <th scope="row">{{this.peopleID}}</th>
+      <td>{{this.firstName}}</td>
+      <td>{{this.lastName}}</td>
+      <td>{{this.phoneNumber}}</td>
+      <td>{{this.occupation}}</td>
+      <td>{{this.email}}</td>
+      <td id="action_buttons">
+        <a class="bi bi-pencil-square"  href="/people/edit/{{this.peopleID}}"></a>
+        {{!-- <a class="bi bi-trash fa-lg " href="/people/delete/{{this.peopleID}}" ></a> --}}
+        <button type="button" class="bi bi-trash fa-lg delete-btn"  > Delete </button>
+      </td>
+    </tr>
+  </tbody>
+  {{/each}}
+</table>
+
+
+
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+<input type="hidden" class="bi bi-trash fa-lg delete-confirmation" data-bs-toggle="modal" data-bs-target="#deleteModal"> </input>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/people/delete "  method="post">
+      <input type="hidden" id="deleteID" name="deleteID">
+        <div class="modal-body">
+          Delete the entry?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" id ="deleteData" name="deleteData" class="btn btn-primary" >Delete</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{{!-- assign id to input in modal --}}
+<script>
+window.onload = function() {
+  var btns = document.querySelectorAll('.delete-btn').length;
+  for(i = 0; i < btns; i++){
+    document.querySelectorAll('.delete-btn')[i].addEventListener("click",function(){
+      
+      var btnShow = document.querySelector('.delete-confirmation');
+      btnShow.click();
+
+      var peopleID = this.closest('tr').querySelector('th').innerText;
+
+      var formDel = document.querySelector('#deleteID');
+      formDel.value = peopleID;
+      
+    })
+  }
+};
+</script>

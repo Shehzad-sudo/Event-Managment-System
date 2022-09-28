@@ -1,0 +1,69 @@
+<div>
+    {{!-- button --}}
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="display:flex;">
+    <a href = "/event/addEvent" class="btn btn-primary me-md-2" type="button">Organize Event</a>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="display:flex;">
+    <a href = "/event/add" class="btn btn-primary me-md-2" type="button">Cancel Event</a>
+    </div>
+
+    {{#each entity}}    
+    
+    <table style="width:500px; height:250px; border: 1px solid black !important ;border-collapse: collapse;padding: 5px; text-align: center; margin : 5px 5px 10px 5px; " rules="all">
+        <tr style="background-color: rgb(240, 235, 227); height:12%">
+            <td name = "id"   colspan="1" style="display : none" > {{this.eventID}} </td> 
+            <td name = "Name" colspan="3" style="width: 100%;height:20%" >{{this.name}}</td>
+
+        </tr>
+
+         <tr>
+            <td name = "seatsRes"   colspan="1" style="width: 40%;height:40%;border: 1px solid black;" >Seats booked: {{this.reservedSeats}} </td>
+            <td name = "seatsAva" colspan="1" style="width: 40%;height:40%;border: 1px solid black; " >Seats avaliable: {{this.seatsAva}}</td>
+            <td name = "type" colspan="1" style="width:20% ;height:40%;border: 1px solid black;" >Event Type: {{this.type}} </td>
+
+        </tr>
+
+        <tr>
+            <td name = "startTime"   colspan="1" style="width: 40% ;height:40%;border: 1px solid black;" >Start Time: {{this.startTime}}</td>
+            <td name = "endTime" colspan="1" style="width: 40% ;height:40%;border: 1px solid black;" >End Time: {{this.endTime}} </td>
+            <td name = "location" colspan="1" style="width: 20%;height:40%;border: 1px solid black;" >Held in {{this.location}} </td>
+
+        </tr>
+
+        <tr>
+            <td name = "Add Attendees" id="addAttendees"  colspan="1" style="width: 40% ;height:40%;border: 1px solid black;" >
+                <button type="button" class="btn add-attendees" data-bs-dismiss="">Add Attendees</button>
+            </td>
+            <td name = "Add staff" id="addStaff" colspan="2" style="width: 20%;height:40%;border: 1px solid black;" > 
+                <button type="button" class="btn add-secondary" data-bs-dismiss="">Assign Staff</button>
+            </td>
+
+        </tr>
+    </table>
+    
+{{/each}}
+
+</div>
+
+
+<script>
+    window.addEventListener('load',function(){
+        
+        document.querySelector('.add-attendees').addEventListener('click',function(){
+            var id = this.closest('table').querySelector('tr td').innerText;
+            
+
+            id = parseInt(id);
+
+
+            localStorage["eventID"] = id;
+            var file = "/event/visitor/" + id;
+            
+            location.href = file;
+
+
+        })
+
+    })
+</script>

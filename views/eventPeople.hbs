@@ -1,0 +1,60 @@
+<script src="/lib_functions.js"></script>
+
+{{!-- button --}}
+<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="display:flex;">
+  <a href = "/people/add" class="btn btn-primary me-md-2" type="button">Add</a>
+</div>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Occupation</th>
+      <th scope="col">Email</th>
+      <th scope="colgroup">Actions</th>
+
+    </tr>
+  </thead>
+
+
+{{#each entity}}
+  <tbody class="table-group-divider">
+    <tr>
+      <th scope="row">{{this.peopleID}}</th>
+      <td>{{this.firstName}}</td>
+      <td>{{this.lastName}}</td>
+      <td>{{this.phoneNumber}}</td>
+      <td>{{this.occupation}}</td>
+      <td>{{this.email}}</td>
+      <td id="action_buttons">
+        
+        <button type="button" class="bi bi-plus fa-lg add-btn"  > ADD </button>
+      </td>
+    </tr>
+  </tbody>
+  {{/each}}
+</table>
+
+
+
+
+
+
+<!-- Button trigger modal -->
+<script>
+    window.addEventListener('load',function(){
+
+        document.querySelector('.add-btn').addEventListener('click',function(){
+            
+            const eventID = localStorage["eventID"];
+            const peopleID = this.closest('tr').querySelector('th').innerText;
+            window.location = "/event/addpeopleEvent/" + eventID +"/" + peopleID;
+            this.closest('tr').classList.add('hideit');
+        })
+
+    })
+</script>

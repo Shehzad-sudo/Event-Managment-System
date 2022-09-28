@@ -1,0 +1,64 @@
+    <div class="edit-form">
+        {{#each entity}}
+        <form class="row g-3 needs-validation was-validated" method="POST" validate>
+            <div class="col-md-3">
+                <label for="validationCustom01" class="form-label">First name</label>
+                <input type="text" class="form-control" id="validationCustom01"  name="firstName" value="{{this.firstName}}">
+            </div>
+            <div class="col-md-3">
+                <label for="validationCustom02" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="validationCustom02"  name="lastName" value="{{this.lastName}}">
+            </div>
+            <div class="col-md-3">
+                <label for="validationCustomUsername" class="form-label">Phone</label>
+                <div class="input-group has-validation">
+                {{!-- <span class="input-group-text" id="inputGroupPrepend">+92</span> --}}
+                <input type="text" value="{{this.phoneNumber}}" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"  minlength="13" maxlength="13" name="phone">
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Email</label>
+                <input type="text" class="form-control" id="validationCustom03" value="{{this.email}}"  name="email">
+            </div>
+            <div class="col-md-3">
+                <label for="validationCustom04" class="form-label">Gender</label>
+                <select class="form-select" id="validationCustom04"  name="gender">
+
+                <option >Male</option>
+                <option >Female</option>
+                <option >Other</option>
+
+                {{#if_eq this.gender 1 }}
+                <option selected >Male</option>
+                <option >Female</option>
+                <option >Other</option>
+                {{/if_eq}} 
+                {{#if_eq this.gender 2 }}
+                <option >Male</option>
+                <option selected >Female</option>
+                <option >Other</option>
+                {{/if_eq}}
+                {{#if_eq this.gender 3 }}
+                <option >Male</option>
+                <option >Female</option>
+                <option selected >Other</option>
+                {{/if_eq}}
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationCustomcnic" class="form-label">CNIC</label>
+                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" value = "{{this.cnic}}" name="cnic">
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Occupation</label>
+                <input type="text" class="form-control" id="validationCustom02" value="{{this.occupation}}" name="occupation">
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary d-grid" type="submit">Submit form</button>
+            </div>
+            {{/each}}
+        </form>
+    </div>

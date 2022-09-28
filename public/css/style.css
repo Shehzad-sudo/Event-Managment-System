@@ -1,0 +1,184 @@
+*{
+  box-sizing: border-box;
+}
+
+
+html, body  {
+  height: 100%;
+  overflow: hidden;
+}
+
+.side-nav{
+  width:17% ; height:100%; display:inline-block; overflow: hidden;
+}
+
+.side-nav-flex{
+  position: block;
+  position: fixed;
+
+}
+.brand{
+  margin-left: 40px;
+  margin-top:  20px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+
+.side-nav-content{
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+   display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+.side-nav-content li{
+  list-style: none;
+}
+.side-nav-content li a{
+  padding: 0 30px 0 30px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  text-decoration: none;
+  position: relative;
+}
+
+.link-name{
+  padding-left: 5px;
+}
+
+ul li a:hover {
+  background-image: linear-gradient(
+    to right,
+    #48a9ea 4px,
+    rgba(255, 255, 255, 0.1) 20px
+  );
+  transition: all 3s;
+  
+}
+
+ul li a:hover i {
+  color: #48a9ea;
+}
+ul li a:hover .link-name {
+  color: #48a9ea;
+}
+
+.nav-link-active{
+  color: #48a9ea!important;
+}
+/* for color of links */
+nav .side-nav-content a{
+  color: white;
+}
+
+.side-nav{
+  display: inline-block;
+
+}
+
+main{
+  position: absolute;
+}
+
+.top-nav{
+  display: flex;
+  position: absolute;
+  padding: 10px 5px 20px 10px;
+}
+
+.toggle-ham{
+  border: 0px;
+  background: #fff;
+  justify-content: center;
+  font-size: large;
+  
+}
+
+.toggle-ham:hover { -webkit-text-stroke: 1px; }  /*making bold ham*/
+
+
+.search-bar{
+  width: 50%;
+  max-width: 500px;
+  display: flex;
+  padding: 3px;
+  align-items: stretch;
+  
+
+}
+
+.search-bar input{
+  background: whitesmoke;
+  border: 0px;
+}
+
+.search-bar button{
+  margin: 0 0 0 0;
+  border: 0px;
+  padding: 0 5px 0 0;
+  background: whitesmoke;
+
+}
+
+.main-content{
+  padding:40px 40px 10px 40px;
+  overflow: auto;
+}
+
+
+
+
+
+
+/* old  */
+.table, table-bordered {
+    margin-top: 0.3cm;
+}
+.d-grid{
+    margin-top: 0.3cm;
+}
+
+
+  html, body {
+    margin:0;
+    padding:0;
+    height:100%; /* needed for container min-height */
+    width: auto;
+    background:gray;
+
+}
+
+  /* spacing between action in people*/
+  #action_buttons a{
+    margin-left: 0.1cm;
+    margin-right: 0.2cm;
+  }
+
+
+
+  
+  /* fordot in event maker*/
+  .reddot {
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    border-radius: 50%;
+  }
+
+  .greendot {
+    height: 25px;
+    width: 25px;
+    background-color: green;
+    border-radius: 50%;
+
+  }
+
+  .hideit{
+    display: none!important;
+    background-color: white;
+  }
+
+
+

@@ -1,0 +1,139 @@
+<script>
+
+  let value = {{{data}}};
+  
+
+  window.addEventListener("load",function(){    
+      window.console.log(value);
+
+      for(var i = 0 ; i < value.length ; i++){
+          if(value[i] == 0){
+              //document.querySelectorAll('.red')[i].classList.remove('hiteit');
+              document.querySelectorAll('.aval')[i].classList.add('hideit');
+              document.querySelectorAll('.unaval')[i].classList.remove('hideit');
+             // document.querySelectorAll('.aval')[i].classList.add('hiteit');
+
+              document.querySelectorAll('.action-button')[i].classList.add('hideit');
+              //document.querySelectorAll('.green')[i].classList.add('hiteit');
+          }
+      }        
+      
+      });
+
+      
+</script> 
+
+
+
+<script>
+  
+    window.addEventListener("load",function(){
+
+      document.querySelectorAll(".action-button").forEach(button => {
+        button.addEventListener("click",function(){
+          var locID = this.closest('tr').querySelector('th').innerText;
+          localStorage["locID"] = locID;
+          history.back();
+        })
+
+
+      } )
+
+
+    })
+</script>
+
+
+
+<div id = "form">
+<form class="row g-3 " method="POST" action="" validate>
+        
+    <form action="post" validate>
+
+      <div style="display:block ;">
+          <div class="col-md-4" style="display:block ;">
+          <label for="validationCustomcnic" class="form-label">Start Time</label>
+          <input  type="datetime-local" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="" name="startDate">
+          </div>
+      </div>
+
+
+      <div style="display:block ;">
+          <div class="col-md-4">
+          <label for="validationCustomcnic" class="form-label">End Time</label>
+          <input  type="datetime-local" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="" name="endTime">
+          </div>
+      </div>
+
+        <div class="col-md-12"  style="display:non ;">
+        <button class="btn btn-primary d-grid" type="submit">Check Avalibility</button>
+        </div>
+
+    </form>
+
+    <div class="col-md-3" style="margin-top: 8px;">
+        <label for="validationCustomcnic" class="form-label">Select Venue</label>
+        <div class="input-group">
+            <input  type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" aria-readonly="true" required="" readonly name="venue">    
+            <button type="button" class="bi bi-plus fa-lg select-venue" aria-readonly="true" style="border:0 ;"> </button>
+    </div>
+    
+
+  <div class="col-md-12">
+    <button class="btn btn-primary d-grid" type="submit">Submit form</button>
+  </div>
+</form>
+</div>
+
+
+
+
+
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Venue Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Avalibility </th>
+      <th scope="col">Action</th>
+
+      
+
+    </tr>
+  </thead>
+
+
+{{#each entity}}
+  <tbody class="table-group-divider">
+    <tr>
+      <th id = "empID" scope="row">{{this.locationID}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.address}}</td>
+      <td>
+        <div class="aval">
+        <div >Avaliable</div>
+        <div class="greendot"></div>
+        </div>
+
+        <div class="unaval hideit">
+        <div >Unavaliable</div>
+        <div class="reddot"></div>
+        </div>
+
+      <td class="action-button">
+        <button type="button" class="bi bi-plus fa-lg select-btn" > Select </button>
+      </td>
+    </tr>
+  </tbody>
+{{/each}}
+</table>
+
+
+
+
+
+
